@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>📚 Study Plan</h2>
+
+<div class="card">
+<h4>Add New Timetable</h4>
+<form method="POST">
+    <input type="text" name="subject" placeholder="Subject" class="form-control mb-2" required>
+    <select name="day" class="form-control mb-2" required>
+        <option value="">Day</option>
+        <option>Monday</option>
+        <option>Tuesday</option>
+        <option>Wednesday</option>
+        <option>Thursday</option>
+        <option>Friday</option>
+        <option>Saturday</option>
+        <option>Sunday</option>
+    </select>
+    <input type="time" name="start_time" class="form-control mb-2" required>
+    <input type="time" name="end_time" class="form-control mb-2" required>
+    <button type="submit" class="btn btn-primary">Add Timetable</button>
+</form>
+</div>
+
+<div class="card mt-3">
+<h4>Your Timetables</h4>
+{% if timetables %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Subject</th>
+            <th>Day</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for t in timetables %}
+        <tr>
+            <td>{{ t[1] }}</td>
+            <td>{{ t[2] }}</td>
+            <td>{{ t[3] }}</td>
+            <td>{{ t[4] }}</td>
+            <td>
+                <a href="{{ url_for('edit_timetable', id=t[0]) }}" class="btn btn-warning btn-sm">Edit</a>
+                <a href="{{ url_for('delete_timetable', id=t[0]) }}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No timetables yet.</p>
+{% endif %}
+</div>
+{% endblock %}

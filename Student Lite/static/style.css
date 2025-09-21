@@ -1,0 +1,18 @@
+body { font-family: 'Roboto', sans-serif; margin:0; background:#f4f6f9; }
+.sidebar {
+    position: fixed; left:0; top:0; height:100%;
+    width:60px; background:#2c3e50; transition:width 0.3s; overflow:hidden;
+}
+.sidebar:hover { width:200px; }
+.sidebar .logo { color:white; font-size:18px; text-align:center; padding:20px 0; }
+.sidebar a { display:block; color:white; padding:15px 10px; text-decoration:none; white-space:nowrap; }
+.sidebar a:hover { background:#34495e; }
+.sidebar .icon { margin-right:10px; }
+.main-content { margin-left:60px; padding:20px; transition:margin-left 0.3s; }
+.sidebar:hover ~ .main-content { margin-left:200px; }
+.card { background:white; border-radius:10px; padding:20px; margin-bottom:20px; box-shadow:0 4px 6px rgba(0,0,0,0.1); }
+.btn { border-radius:5px; }
+.table { width:100%; border-collapse: collapse; }
+.table th, .table td { border:1px solid #ddd; padding:8px; text-align:left; }
+.table th { background:#f2f2f2; }
+input, select { border-radius:5px; padding:8px; width:100%; }

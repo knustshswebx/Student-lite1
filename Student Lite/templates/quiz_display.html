@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Quiz: {{ subject }}</h2>
+<div id="timer" class="alert alert-info text-center"></div>
+<div class="card mt-3">
+{% for q in questions %}
+<p><strong>Q{{ loop.index }}:</strong> {{ q }}</p>
+<input type="text" class="form-control mb-2" placeholder="Your answer">
+{% endfor %}
+<button class="btn btn-success mt-2" onclick="submitQuiz()">Submit Quiz</button>
+</div>
+
+<script>
+let duration={{ duration }};
+let remaining=duration*60;
+const timerDiv=document.getElementById("timer");
+function updateTimer(){
+    let mins=Math.floor(remaining/60);
+    let secs=remaining%60;
+    timerDiv.innerText=`Time Remaining: ${mins.toString().padStart(2,'0')}:${secs.toString().padStart(2,'0')}`;
+    remaining--;
+    if(remaining<0){ clearInterval(interval); alert("Time's up!"); submitQuiz();}
+}
+const interval=setInterval(updateTimer,1000);
+updateTimer();
+function submitQuiz(){ alert("Quiz submitted!"); window.location.href="{{ url_for('quiz') }}"; }
+</script>
+{% endblock %}
+

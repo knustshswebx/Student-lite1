@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Student Lite</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="sidebar">
+    <div class="logo">📝 Student Lite</div>
+    <a href="{{ url_for('home') }}"><span class="icon">🏠</span> Home</a>
+    <a href="{{ url_for('study_plan') }}"><span class="icon">📚</span> Study Plan</a>
+    <a href="{{ url_for('quiz') }}"><span class="icon">📝</span> Quiz</a>
+    <a href="{{ url_for('sports') }}"><span class="icon">🏀</span> Sports</a>
+    <a href="{{ url_for('dictionary') }}"><span class="icon">📖</span> Dictionary</a>
+</div>
+
+<div class="main-content">
+    {% block content %}{% endblock %}
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
+

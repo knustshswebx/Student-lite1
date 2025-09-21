@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Edit Timetable</h2>
+<div class="card">
+<form method="POST">
+    <input type="text" name="subject" value="{{ timetable[1] }}" class="form-control mb-2" required>
+    <select name="day" class="form-control mb-2" required>
+        <option value="{{ timetable[2] }}" selected>{{ timetable[2] }}</option>
+        <option>Monday</option>
+        <option>Tuesday</option>
+        <option>Wednesday</option>
+        <option>Thursday</option>
+        <option>Friday</option>
+        <option>Saturday</option>
+        <option>Sunday</option>
+    </select>
+    <input type="time" name="start_time" value="{{ timetable[3] }}" class="form-control mb-2" required>
+    <input type="time" name="end_time" value="{{ timetable[4] }}" class="form-control mb-2" required>
+    <button type="submit" class="btn btn-success">Update</button>
+</form>
+</div>
+{% endblock %}
